@@ -1,0 +1,553 @@
+<Config>
+  <Views>
+    <View Name="Administrator" Enable="T" IconID="48" WaterMarkID="51">
+      <Item MappingID="1" Name="Users" Enable="T" IconID="app_address"/>
+      <Item MappingID="2" Name="Position" Enable="T" IconID="app_cal"/>      
+    </View>
+    <View Name="Test" Enable="T" IconID="55" WaterMarkID="56">
+      <Item MappingID="3" Name="Product" Enable="T" IconID="app_camera"/>
+      <Item MappingID="4" Name="TEST" Enable="T" IconID="app_camera"/>
+    </View>
+  </Views>
+  <Mappings MID="1">
+    <Mapping ID="1" Name="Users" RowID="E" ManagementID="Management1" ToolID="Tools1" ThemeID="Theme1" ParameterID="Parameter1" />
+    <Mapping ID="2" Name="Position" RowID="E" ManagementID="Management2" ToolID="Tools2" ThemeID="Theme2" ParameterID="Parameter1" />
+    <Mapping ID="3" Name="Product" RowID="E" ManagementID="Management3" ToolID="Tools3" ThemeID="Theme5" ParameterID="Parameter1" />
+    <Mapping ID="4" Name="Demo" RowID="E" ManagementID="Management4" ToolID="Tools4" ThemeID="Theme5" ParameterID="Parameter1" />
+  </Mappings>
+  <Managements MID="1">
+    <Management ID="Management1" Type="OFFICE">
+      <Connection>
+        <Item Server="dmsdm-db1-p1\testDB" Database="SurveyDB" Login="Surveyadmin" Password="adminsurvey" />
+      </Connection>
+      <NextwaverDB Connection="NextwaverDatabase" DatabaseName="desktop" TableName="users" />
+      <Wheres>
+        <!--<Where Column="ID" Value="1"/>-->
+      </Wheres>
+      <!--<User Column="CREATE_BY" />-->
+      <Group Connection="NextwaverDatabase" DatabaseName="desktop" TableName="users" Display="CREATE_BY" Value="CREATE_BY" Text="ผู้สร้าง"/>
+      <Query>
+        <SQL ID="Main">
+          SELECT [ServerId]
+          ,[ServerName]
+          ,[ServerPort]
+          ,convert(varchar(100),[CreateDate],103) as [CreateDate]
+          ,[CreateBy]
+          ,convert(varchar(100),[UpdateDate],103) as [UpdateDate]
+          ,[UpdateBy]
+          ,[RowId]
+          FROM [Server]
+        </SQL>
+        <SQL ID="Group" Name="" Text=""/>
+      </Query>
+      <PageSize>100000</PageSize>
+      <ACL TableName="" Column="" />
+      <Headers Title="User Management">
+        <Header Value="Server" />
+      </Headers>
+      <Tools>
+        <Item Type="SB" Name="Detail" Visible="T" Text="" Tooltiptext="ซ่อน Detail Rows" Click="D" Image="3" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+        <Item Type="SB" Name="Search" Visible="T" Text="" Tooltiptext="ซ่อน Tools Search" Click="S" Image="21" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+        <Item Type="SB" Name="View" Visible="F" Text="" Tooltiptext="ซ่อน View Panel" Click="V" Image="37" />
+        <Item Type="SB" Name="first" Visible="T" Text="" Tooltiptext="ย้อนไปหลังสุด" Click="F" Image="13" />
+        <Item Type="SB" Name="preView" Visible="T" Text="" Tooltiptext="ย้อนกลับ" Click="P" Image="16" />
+        <Item Type="SB" Name="next" Visible="T" Text="" Tooltiptext="ถัดไป" Click="N" Image="15" />
+        <Item Type="SB" Name="last" Visible="T" Text="" Tooltiptext="ย้อนไปข้างหลังสุด" Click="L" Image="14" />
+        <Item Type="SB" Name="ACL" Visible="F" Text="" Tooltiptext="ACL" Click="A" Image="12" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+      </Tools>
+      <Table>
+        <Column Name="ID" Text="ลำดับ" Width="70" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="T" />
+        <Column Name="USERNAME" Text="ชื่อผู้ใช้งาน" Width="100" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="PASSWORD" Text="รหัสผ่าน" Width="80" Format="xxx" Visible="F" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="TITLE" Text="คำนำหน้าชื่อ" Width="100" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="FIRSTNAME" Text="ชื่อ" Width="150" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="LASTNAME" Text="นามสกุล" Width="150" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="POSITION_CODE" Text="รหัสตำแหน่ง" Width="100" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="CREATE_DATE" Text="วันที่สร้าง" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="CREATE_BY" Text="ผู้สร้าง" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="UPDATE_DATE" Text="วันที่แก้ไข" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="UPDATE_BY" Text="ผู้แก้ไข" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+      </Table>
+      <DetailRow width="70">
+        <Row ColumnName="ID" Text="ลำดับ" Visible="T" />
+        <Row ColumnName="USERNAME" Text="ชื่อผู้ใช้งาน" Visible="T" />
+        <Row ColumnName="TITLE" Text="คำนำหน้าชื่อ" Visible="T" />
+        <Row ColumnName="FIRSTNAME" Text="ชื่อ" Visible="T" />
+        <Row ColumnName="LASTNAME" Text="นามสกุล" Visible="T" />
+        <Row ColumnName="POSITION_CODE" Text="รหัสตำแหน่ง" Visible="T" />
+        <Row ColumnName="CREATE_DATE" Text="วันที่สร้าง" Visible="T" />
+        <Row ColumnName="CREATE_BY" Text="ผู้สร้าง" Visible="T" />
+        <Row ColumnName="UPDATE_DATE" Text="วันที่แก้ไข" Visible="T" />
+        <Row ColumnName="UPDATE_BY" Text="ผู้แก้ไข" Visible="T" />
+      </DetailRow>
+      <Searchs>
+        <Search ID="0" FiledName="" Text="" Type="STR" />
+        <Search ID="1" FiledName="USERNAME" Text="ชื่อผู้ใช้งาน" Type="STR" />
+        <Search ID="2" FiledName="FIRSTNAME" Text="ชื่อ" Type="STR" />
+        <Search ID="3" FiledName="LASTNAME" Text="นามสกุล" Type="STR" />
+      </Searchs>
+      <SearchLike Comment="ใช้ได้แค่ 5 ตัว">
+        <Search ID="1" FiledName="USERNAME" Text="ชื่อผู้ใช้งาน" Type="STR" />
+        <Search ID="2" FiledName="FIRSTNAME" Text="ชื่อ" Type="STR" />
+        <Search ID="3" FiledName="LASTNAME" Text="นามสกุล" Type="INT" />
+      </SearchLike>
+    </Management>
+    <Management ID="Management2" Type="OFFICE">
+      <Connection>
+        <Item Server="dmsdm-db1-p1\testDB" Database="SurveyDB" Login="Surveyadmin" Password="adminsurvey" />
+      </Connection>
+      <NextwaverDB Connection="NextwaverDatabase" DatabaseName="desktop" TableName="position" />
+      <Query>
+        <SQL ID="Main">
+          SELECT [ServerId]
+          ,[ServerName]
+          ,[ServerPort]
+          ,convert(varchar(100),[CreateDate],103) as [CreateDate]
+          ,[CreateBy]
+          ,convert(varchar(100),[UpdateDate],103) as [UpdateDate]
+          ,[UpdateBy]
+          ,[RowId]
+          FROM [Server]
+        </SQL>
+        <SQL ID="Group" Name="" Text=""/>
+      </Query>
+      <PageSize>100000</PageSize>
+      <ACL TableName="" Column="" />
+      <Headers Title="Position Management">
+        <Header Value="Server" />
+      </Headers>
+      <Tools>
+        <Item Type="SB" Name="Detail" Visible="T" Text="" Tooltiptext="ซ่อน Detail Rows" Click="D" Image="3" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+        <Item Type="SB" Name="Search" Visible="T" Text="" Tooltiptext="ซ่อน Tools Search" Click="S" Image="21" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+        <Item Type="SB" Name="View" Visible="F" Text="" Tooltiptext="ซ่อน View Panel" Click="V" Image="37" />
+        <Item Type="SB" Name="first" Visible="T" Text="" Tooltiptext="ย้อนไปหลังสุด" Click="F" Image="13" />
+        <Item Type="SB" Name="preView" Visible="T" Text="" Tooltiptext="ย้อนกลับ" Click="P" Image="16" />
+        <Item Type="SB" Name="next" Visible="T" Text="" Tooltiptext="ถัดไป" Click="N" Image="15" />
+        <Item Type="SB" Name="last" Visible="T" Text="" Tooltiptext="ย้อนไปข้างหลังสุด" Click="L" Image="14" />
+        <Item Type="SB" Name="ACL" Visible="F" Text="" Tooltiptext="ACL" Click="A" Image="12" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+      </Tools>
+      <Table>
+        <Column Name="ID" Text="ลำดับ" Width="50" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="POSITION_CODE" Text="รหัสตำแหน่ง" Width="100" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="POSITION_NAME" Text="ชื่อตำแหน่ง" Width="200" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="PARENT_CODE" Text="รหัสหัวหน้า" Width="100" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="CREATE_DATE" Text="วันที่สร้าง" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="CREATE_BY" Text="ผู้สร้าง" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="UPDATE_DATE" Text="วันที่แก้ไข" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="UPDATE_BY" Text="ผู้แก้ไข" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+      </Table>
+      <DetailRow>
+        <Row ColumnName="ID" Text="ID" Visible="T" />
+        <Row ColumnName="POSITION_CODE" Text="POSITION_CODE" Visible="T" />
+        <Row ColumnName="POSITION_NAME" Text="POSITION_NAME" Visible="T" />
+        <Row ColumnName="PARENT_CODE" Text="PARENT_CODE" Visible="T" />
+      </DetailRow>
+      <Searchs>
+        <Search ID="0" FiledName="" Text="" Type="STR" />
+        <Search ID="1" FiledName="POSITION_CODE" Text="รหัสตำแหน่ง" Type="STR" />
+        <Search ID="2" FiledName="POSITION_NAME" Text="ชื่อตำแหน่ง" Type="STR" />
+        <Search ID="3" FiledName="PARENT_CODE" Text="รหัสหัวหน้า" Type="STR" />
+      </Searchs>
+      <SearchLike Comment="ใช้ได้แค่ 5 ตัว">
+        <Search ID="1" FiledName="POSITION_CODE" Text="รหัสตำแหน่ง" Type="STR" />
+        <Search ID="2" FiledName="POSITION_NAME" Text="ชื่อตำแหน่ง" Type="STR" />
+        <Search ID="3" FiledName="PARENT_CODE" Text="รหัสหัวหน้า" Type="STR" />
+      </SearchLike>
+    </Management>   
+    <Management ID="Management3" Type="SQL">
+      <Connection>
+        <Item Server="localhost" Database="Stock" Login="sa" Password="nextwaver" />
+      </Connection>
+      <NextwaverDB Connection="NextwaverDatabase" DatabaseName="app_for_emp" TableName="emp_job" />
+      <Query>
+        <SQL ID="Main">
+          SELECT [PRO_ID]
+          ,[PRO_ORDER_ID]
+          ,[PRO_NAME]
+          ,[PRO_PV] 
+          ,[STATUS]
+          FROM [Product]
+          WHERE 1=1
+        </SQL>
+        <SQL ID="Group" Name="" Text=""/>
+      </Query>
+      <PageSize>100000</PageSize>
+      <ACL TableName="" Column="" />
+      <Headers Title="Product">
+        <Header Value="ใบสมัครงาน" />
+      </Headers>
+      <Tools>
+        <Item Type="SB" Name="Detail" Visible="T" Text="" Tooltiptext="ซ่อน Detail Rows" Click="D" Image="3" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+        <Item Type="SB" Name="Search" Visible="T" Text="" Tooltiptext="ซ่อน Tools Search" Click="S" Image="21" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+        <Item Type="SB" Name="View" Visible="F" Text="" Tooltiptext="ซ่อน View Panel" Click="V" Image="37" />
+        <Item Type="SB" Name="first" Visible="T" Text="" Tooltiptext="ย้อนไปหลังสุด" Click="F" Image="13" />
+        <Item Type="SB" Name="preView" Visible="T" Text="" Tooltiptext="ย้อนกลับ" Click="P" Image="16" />
+        <Item Type="SB" Name="next" Visible="T" Text="" Tooltiptext="ถัดไป" Click="N" Image="15" />
+        <Item Type="SB" Name="last" Visible="T" Text="" Tooltiptext="ย้อนไปข้างหลังสุด" Click="L" Image="14" />
+        <Item Type="SB" Name="ACL" Visible="F" Text="" Tooltiptext="ACL" Click="A" Image="12" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+      </Tools>
+      <Table>
+        <Column Name="PRO_ID" Text="PRO_ID" Width="50" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="STATUS" Text="STATUS" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />       
+        <Column Name="PRO_NAME" Text="PRO_NAME" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="PRO_PV" Text="PRO_PV" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />       
+      </Table>
+      <DetailRow>
+        <Row ColumnName="PRO_ID" Text="PRO_ID" Visible="T" />      
+        <Row ColumnName="PRO_NAME" Text="PRO_NAME" Visible="T" />
+        <Row ColumnName="PRO_PV" Text="PRO_PV" Visible="T" />
+      </DetailRow>
+      <Searchs>
+        <Search ID="0" FiledName="" Text="" Type="STR" />
+        <Search ID="1" FiledName="PRO_NAME" Text="PRO_NAME" Type="STR" />
+      </Searchs>
+      <SearchLike Comment="ใช้ได้แค่ 5 ตัว">
+        <Search ID="1" FiledName="PRO_NAME" Text="PRO_NAME" Type="STR" />
+      </SearchLike>
+    </Management>
+    <Management ID="Management4" Type="OFFICE">
+      <Connection>
+        <Item Server="dmsdm-db1-p1\testDB" Database="SurveyDB" Login="Surveyadmin" Password="adminsurvey" />
+      </Connection>
+      <NextwaverDB Connection="NextwaverDatabase" DatabaseName="EXT_DEMO" TableName="DEMO_DOC" />
+      <Wheres>
+        <!--<Where Column="ID" Value="1"/>-->
+      </Wheres>
+      <!--<User Column="CREATE_BY" />-->
+      <Group Connection="NextwaverDatabase" DatabaseName="desktop" TableName="users" Display="CREATE_BY" Value="CREATE_BY" Text="ผู้สร้าง"/>
+      <Query>
+        <SQL ID="Main">
+          SELECT [ServerId]
+          ,[ServerName]
+          ,[ServerPort]
+          ,convert(varchar(100),[CreateDate],103) as [CreateDate]
+          ,[CreateBy]
+          ,convert(varchar(100),[UpdateDate],103) as [UpdateDate]
+          ,[UpdateBy]
+          ,[RowId]
+          FROM [Server]
+        </SQL>
+        <SQL ID="Group" Name="" Text=""/>
+      </Query>
+      <PageSize>100000</PageSize>
+      <ACL TableName="" Column="" />
+      <Headers Title="Server">
+        <Header Value="Server" />
+      </Headers>
+      <Tools>
+        <Item Type="SB" Name="Detail" Visible="T" Text="" Tooltiptext="ซ่อน Detail Rows" Click="D" Image="3" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+        <Item Type="SB" Name="Search" Visible="T" Text="" Tooltiptext="ซ่อน Tools Search" Click="S" Image="21" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+        <Item Type="SB" Name="View" Visible="F" Text="" Tooltiptext="ซ่อน View Panel" Click="V" Image="37" />
+        <Item Type="SB" Name="first" Visible="T" Text="" Tooltiptext="ย้อนไปหลังสุด" Click="F" Image="13" />
+        <Item Type="SB" Name="preView" Visible="T" Text="" Tooltiptext="ย้อนกลับ" Click="P" Image="16" />
+        <Item Type="SB" Name="next" Visible="T" Text="" Tooltiptext="ถัดไป" Click="N" Image="15" />
+        <Item Type="SB" Name="last" Visible="T" Text="" Tooltiptext="ย้อนไปข้างหลังสุด" Click="L" Image="14" />
+        <Item Type="SB" Name="ACL" Visible="F" Text="" Tooltiptext="ACL" Click="A" Image="12" />
+        <Item Type="SS" Name="spriter" Visible="T" />
+      </Tools>
+      <Table>
+        <Column Name="ID" Text="ลำดับ" Width="70" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="T" />
+        <Column Name="NAME" Text="ชื่อผู้ใช้งาน" Width="100" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="VALUE1" Text="ตัวแปรที่ 1" Width="80" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />
+        <Column Name="VALUE2" Text="ตัวแปรที่ 2" Width="100" Format="xxx" Visible="T" DataAlign="D" ColumnAlign="D" FixedColumn="F" />       
+      </Table>
+      <DetailRow width="70">
+        <Row ColumnName="ID" Text="ลำดับ" Visible="T" />
+        <Row ColumnName="NAME" Text="ชื่อผู้ใช้งาน" Visible="T" />
+        <Row ColumnName="VALUE1" Text="ตัวแปรที่ 1" Visible="T" />
+        <Row ColumnName="VALUE1" Text="ตัวแปรที่ 2" Visible="T" />
+      </DetailRow>
+      <Searchs>
+        <Search ID="0" FiledName="" Text="" Type="STR" />
+        <Search ID="1" FiledName="NAME" Text="ชื่อผู้ใช้งาน" Type="STR" />
+        <Search ID="2" FiledName="VALUE1" Text="ตัวแปรที่ 1" Type="STR" />
+        <Search ID="3" FiledName="VALUE2" Text="ตัวแปรที่ 2" Type="STR" />
+      </Searchs>
+      <SearchLike Comment="ใช้ได้แค่ 5 ตัว">
+        <Search ID="1" FiledName="NAME" Text="ชื่อผู้ใช้งาน" Type="STR" />
+        <Search ID="2" FiledName="VALUE1" Text="ตัวแปรที่ 1" Type="STR" />
+        <Search ID="3" FiledName="VALUE2" Text="ตัวแปรที่ 2" Type="STR" />
+      </SearchLike>
+    </Management>
+  </Managements>
+  <Tools MID="1">
+    <Tool ID="Tools1">
+      <Item Name="Add" Type="SB" Visible="T" DisplayStyle="IAT" Text="เพิ่ม" Tooltiptext="เพิ่มผู้ใช้งาน" Click="AddUser" Image="fa-plus" S_Enable="S:0:1:2:3:4:5:6:7:8:9" S_Visible="S:0:1:2:3:4:5:6:7:8:9"/>
+      <Item Name="Edit" Type="SB" Visible="T" DisplayStyle="IAT" Text="แก้ไข" Tooltiptext="แก้ไขผู้ใช้งาน" Click="EditUser" Image="fa-pencil" S_Enable="S:0:1:2:3:4:5:6:7:8:9" S_Visible="S:0:1:2:3:4:5:6:7:8:9"/>
+      <Item Name="Delete" Type="SB" Visible="T" DisplayStyle="IAT" Text="ลบ" Tooltiptext="ลบผู้ใช้งาน" Click="DeleteUser" Image="fa-trash" S_Enable="S:0:1:2:3:4:5:6:7:8:9" S_Visible="S:0:1:2:3:4:5:6:7:8:9"/>
+
+    </Tool>
+    <Tool ID="Tools2">
+      <Item Name="News" Type="SB" Visible="T" DisplayStyle="IAT" Text="สร้างตำแหน่ง" Tooltiptext="สร้างตำแหน่ง" Click="NewPosition" Image="fa-plus" S_Enable="S:0:1:2:3:4:5:6:7:8:9" S_Visible="S:0:1:2:3:4:5:6:7:8:9"/>
+      <Item Name="Edits" Type="SB" Visible="T" DisplayStyle="IAT" Text="แก้ไขตำแหน่ง" Tooltiptext="แก้ไขตำแหน่ง" Click="EditPosition" Image="fa-pencil" S_Enable="S:0:1:2:3:4:5:6:7:8:9" S_Visible="S:0:1:2:3:4:5:6:7:8:9"/>
+    </Tool>
+    <Tool ID="Tools3">
+      <Item Name="News" Type="SB" Visible="T" DisplayStyle="IAT" Text="สร้างเอกสาร" Tooltiptext="สร้างเอกสาร" Click="NewDocument" Image="fa-plus" S_Enable="S:0:1:2:3:4:5:6:7:8:9" S_Visible="S:0:1:2:3:4:5:6:7:8:9"/>
+      <Item Name="Edits" Type="SB" Visible="T" DisplayStyle="IAT" Text="แก้ไขเอกสาร" Tooltiptext="แก้ไขเอกสาร" Click="EditDocument" Image="fa-pencil" S_Enable="S:0:1:2:3:4:5:6:7:8:9" S_Visible="S:0:1:2:3:4:5:6:7:8:9"/>
+    </Tool>
+    <Tool ID="Tools4">
+      <Item Name="News" Type="SB" Visible="T" DisplayStyle="IAT" Text="สร้างเอกสาร" Tooltiptext="สร้างเอกสาร" Click="NewDocument" Image="fa-plus" S_Enable="S:0:1:2:3:4:5:6:7:8:9" S_Visible="S:0:1:2:3:4:5:6:7:8:9"/>
+      <Item Name="Edits" Type="SB" Visible="T" DisplayStyle="IAT" Text="แก้ไขเอกสาร" Tooltiptext="แก้ไขเอกสาร" Click="EditDocument" Image="fa-pencil" S_Enable="S:0:1:2:3:4:5:6:7:8:9" S_Visible="S:0:1:2:3:4:5:6:7:8:9"/>
+    </Tool>
+  </Tools>
+  <Parameters MID="2">
+    <Parameter ParameterID="Parameter1">
+      <Item Name="aa" Value="aa" />
+    </Parameter>
+    <Parameter ParameterID="Parameter2">
+      <Item Name="tttt" Value="aaa" />
+      <Item Name="bb" Value="bb" />
+    </Parameter>
+    <Parameter ParameterID="Parameter3">
+      <Item Name="tttt" Value="aaa" />
+      <Item Name="bb" Value="bb" />
+    </Parameter>
+  </Parameters>
+  <Themes>
+    <Theme ID="Theme1" Detail="">
+      <Header>
+        <Blackground Type="1">44,96,120</Blackground>
+        <Title Type="2">Control</Title>
+      </Header>
+      <Search>
+        <Blackground Type="1">180,211,211</Blackground>
+      </Search>
+      <Tool>
+        <Blackground Type="1">218,235,242</Blackground>
+      </Tool>
+      <Data>
+        <Blackground Type="1">218,235,242</Blackground>
+      </Data>
+      <DetailData>
+        <Blackground Type="1">218,235,242</Blackground>
+        <Row1 Type="1">218,235,242</Row1>
+        <Row2 Type="2">Window</Row2>
+      </DetailData>
+      <Tool_Foot>
+        <Blackground Type="1">218,235,242</Blackground>
+      </Tool_Foot>
+    </Theme>
+    <Theme ID="Theme2" Detail="">
+      <Header>
+        <Blackground Type="1">255, 192, 192</Blackground>
+        <Title Type="1">0, 0, 192</Title>
+      </Header>
+      <Search>
+        <Blackground Type="1">255, 224, 192</Blackground>
+      </Search>
+      <Tool>
+        <Blackground Type="1">255, 192, 192</Blackground>
+      </Tool>
+      <Data>
+        <Blackground Type="1">255, 192, 192</Blackground>
+      </Data>
+      <DetailData>
+        <Blackground Type="1">255, 192, 192</Blackground>
+        <Row1 Type="1">255, 192, 128</Row1>
+        <Row2 Type="2">Window</Row2>
+      </DetailData>
+      <Tool_Foot>
+        <Blackground Type="1">255, 224, 192</Blackground>
+      </Tool_Foot>
+    </Theme>
+    <Theme ID="Theme3" Detail="">
+      <Header>
+        <Blackground Type="1">192, 255, 192</Blackground>
+        <Title Type="1">0, 0, 192</Title>
+      </Header>
+      <Search>
+        <Blackground Type="2">PaleTurquoise</Blackground>
+      </Search>
+      <Tool>
+        <Blackground Type="1">192, 255, 192</Blackground>
+      </Tool>
+      <Data>
+        <Blackground Type="1">192, 255, 192</Blackground>
+      </Data>
+      <DetailData>
+        <Blackground Type="1">192, 255, 192</Blackground>
+        <Row1 Type="1">192, 255, 255</Row1>
+        <Row2 Type="2">Window</Row2>
+      </DetailData>
+      <Tool_Foot>
+        <Blackground Type="1">192, 255, 192</Blackground>
+      </Tool_Foot>
+    </Theme>
+    <Theme ID="Theme4" Detail="">
+      <Header>
+        <Blackground Type="2">Khaki</Blackground>
+        <Title Type="2">SaddleBRown</Title>
+      </Header>
+      <Search>
+        <Blackground Type="2">PaleGoldenrod</Blackground>
+      </Search>
+      <Tool>
+        <Blackground Type="2">Khaki</Blackground>
+      </Tool>
+      <Data>
+        <Blackground Type="2">Khaki</Blackground>
+      </Data>
+      <DetailData>
+        <Blackground Type="2">Khaki</Blackground>
+        <Row1 Type="2">PaleGoldenrod</Row1>
+        <Row2 Type="2">Window</Row2>
+      </DetailData>
+      <Tool_Foot>
+        <Blackground Type="2">Khaki</Blackground>
+      </Tool_Foot>
+    </Theme>
+    <Theme ID="Theme5" Detail="">
+      <Header>
+        <Blackground Type="2">DarkGray</Blackground>
+        <Title Type="2">ControlText</Title>
+      </Header>
+      <Search>
+        <Blackground Type="2">Control</Blackground>
+      </Search>
+      <Tool>
+        <Blackground Type="2">DarkGray</Blackground>
+      </Tool>
+      <Data>
+        <Blackground Type="2">DarkGray</Blackground>
+      </Data>
+      <DetailData>
+        <Blackground Type="2">DarkGray</Blackground>
+        <Row1 Type="2">Control</Row1>
+        <Row2 Type="2">Window</Row2>
+      </DetailData>
+      <Tool_Foot>
+        <Blackground Type="2">DarkGray</Blackground>
+      </Tool_Foot>
+    </Theme>
+    <Theme ID="Theme6" Detail="">
+      <Header>
+        <Blackground Type="2">LightSlateGray</Blackground>
+        <Title Type="2">White</Title>
+      </Header>
+      <Search>
+        <Blackground Type="1">192, 192, 255</Blackground>
+      </Search>
+      <Tool>
+        <Blackground Type="2">Control</Blackground>
+      </Tool>
+      <Data>
+        <Blackground Type="2">LightSlateGray</Blackground>
+      </Data>
+      <DetailData>
+        <Blackground Type="2">LightSlateGray</Blackground>
+        <Row1 Type="1">192, 192, 255</Row1>
+        <Row2 Type="2">Window</Row2>
+      </DetailData>
+      <Tool_Foot>
+        <Blackground Type="2">Control</Blackground>
+      </Tool_Foot>
+    </Theme>
+    <Theme ID="Theme7" Detail="">
+      <Header>
+        <Blackground Type="1">128,64,0</Blackground>
+        <Title Type="2">Linen</Title>
+      </Header>
+      <Search>
+        <Blackground Type="1">255,192,128</Blackground>
+      </Search>
+      <Tool>
+        <Blackground Type="2">PeachPuff</Blackground>
+      </Tool>
+      <Data>
+        <Blackground Type="1">255,192,128</Blackground>
+      </Data>
+      <DetailData>
+        <Blackground Type="2">PeachPuff</Blackground>
+        <Row1 Type="2">PeachPuff</Row1>
+        <Row2 Type="2">Window</Row2>
+      </DetailData>
+      <Tool_Foot>
+        <Blackground Type="2">PeachPuff</Blackground>
+      </Tool_Foot>
+    </Theme>
+  </Themes>
+  <Images>
+    <Image ID="0" Text="NULL" Path="" />
+    <Image ID="1" Text="" Path="Images/add.png" />
+    <Image ID="2" Text="" Path="Images/applications.gif" />
+    <Image ID="3" Text="" Path="Images/arrow_down.png" />
+    <Image ID="4" Text="" Path="Images/close.png" />
+    <Image ID="5" Text="" Path="Images/confirm.png" />
+    <Image ID="6" Text="" Path="Images/delete.png" />
+    <Image ID="7" Text="" Path="Images/edit.png" />
+    <Image ID="8" Text="" Path="Images/export.png" />
+    <Image ID="9" Text="" Path="Images/help.gif" />
+    <Image ID="10" Text="" Path="Images/home.gif" />
+    <Image ID="11" Text="" Path="Images/igic.png" />
+    <Image ID="12" Text="" Path="Images/lock.PNG" />
+    <Image ID="13" Text="" Path="Images/move_firsts.png" />
+    <Image ID="14" Text="" Path="Images/move_last.png" />
+    <Image ID="15" Text="" Path="Images/move_next.png" />
+    <Image ID="16" Text="" Path="Images/move_preview.png" />
+    <Image ID="17" Text="" Path="Images/print.gif" />
+    <Image ID="18" Text="" Path="Images/print_preview.gif" />
+    <Image ID="19" Text="" Path="Images/save.png" />
+    <Image ID="20" Text="" Path="Images/save_all.gif" />
+    <Image ID="21" Text="" Path="Images/search.png" />
+    <Image ID="22" Text="" Path="Images/web.png" />
+    <Image ID="23" Text="" Path="Images/web_downloads.gif" />
+    <Image ID="24" Text="" Path="Images/note.png" />
+    <Image ID="25" Text="" Path="Images/note_add.png" />
+    <Image ID="26" Text="" Path="Images/note_delete.png" />
+    <Image ID="27" Text="" Path="Images/note_edit.png" />
+    <Image ID="28" Text="" Path="Images/note_find.png" />
+    <Image ID="29" Text="" Path="Images/note_new.png" />
+    <Image ID="30" Text="" Path="Images/note_pinned.png" />
+    <Image ID="31" Text="" Path="Images/note_view.png" />
+    <Image ID="32" Text="" Path="Images/data_new.png" />
+    <Image ID="33" Text="" Path="Images/data_down.png"/>
+    <Image ID="34" Text="" Path="Images/presentation_chart.png"/>
+    <Image ID="35" Text="" Path="Images/pie-chart.png"/>
+    <Image ID="36" Text="" Path="Images/key1_preferences.png"/>
+    <Image ID="37" Text="" Path="Images/shield_preferences.png"/>
+    <Image ID="38" Text="" Path="Images/id_card_delete.png"/>
+
+    <Image ID="39" Text="ผู้ใช้งานระบบ" Path="Icon/user.png"/>
+    <Image ID="40" Text="ประเภทผู้ใช้งาน" Path="Icon/UserType.png"/>
+    <Image ID="41" Text="กลุ่มผู้ใช้งาน" Path="Icon/group.png"/>
+    <Image ID="42" Text="ACL" Path="Icon/apply.png"/>
+
+    <Image ID="43" Text="Business" Path="Icon/Business.png"/>
+    <Image ID="44" Text="calendar" Path="Icon/calendar.png"/>
+    <Image ID="45" Text="Project" Path="Icon/Project.png"/>
+    <Image ID="46" Text="task" Path="Icon/task.png"/>
+    <Image ID="47" Text="Simena" Path="Icon/Simena.png"/>
+
+    <Image ID="48" Text="System Admin" Path="Icon/Title/admin.png"/>
+    <Image ID="49" Text="Business" Path="Icon/Title/Business.png"/>
+
+    <Image ID="51" Text="System Admin WaterMark" Path="Icon/WaterMark/admin.png"/>
+    <Image ID="52" Text="Business WaterMark" Path="Icon/WaterMark/Business.png"/>
+
+    <Image ID="53" Text="Fax" Path="Icon/fax.png"/>
+    <Image ID="54" Text="Email" Path="Icon/Email.png"/>
+
+    <Image ID="55" Text="Document" Path="Icon/Title/Document.png"/>
+    <Image ID="56" Text="Document" Path="Icon/WaterMark/documents.png"/>
+    <Image ID="57" Text="Document" Path="Icon/WaterMark/document_2.png"/>
+
+    <Image ID="58" Text="กลุ่มผู้ใช้งาน" Path="Icon/edit.png"/>
+    <Image ID="59" Text="" Path="Images/file_new.png"/>
+
+    <Image ID="60" Text="" Path="Images/apply.png"/>
+    <Image ID="61" Text="" Path="Images/data.png"/>
+    <Image ID="62" Text="" Path="Images/info2.png"/>
+    <Image ID="63" Text="" Path="Icon/info2.png"/>
+  </Images>
+</Config>

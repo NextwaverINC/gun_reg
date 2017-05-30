@@ -1,0 +1,13 @@
+<Document ID="" Name="GunBrand">
+	<Data>
+		<Section ID="1" Name="GunBrandInfo" Type="STR">
+			<Items Name="GunBrand" Type="FIX">
+				<Item Name="GunBrand" Type="STR" Value="" />
+        <Item Name="CreateDate" Type="STR" Value="" />
+        <Item Name="CreateBy" Type="STR" Value="" />
+        <Item Name="UpdateDate" Type="STR" Value="" />
+        <Item Name="UpdateBy" Type="STR" Value="" />
+			</Items>
+		</Section>
+	</Data>
+</Document>

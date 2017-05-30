@@ -1,0 +1,44 @@
+<Document ID="" Name="">
+  <Profile>
+    <Section ID="1" Name="Who"></Section>
+    <Section ID="2" Name="What"></Section>
+    <Section ID="3" Name="Where"></Section>
+    <Section ID="4" Name="When"></Section>
+    <Section ID="5" Name="Why"></Section>
+  </Profile>
+  <Data>
+    <Section ID="1" Name="Profile" Type="STR">
+      <Items Name="Profile" Type="FIX">
+        <Item Name="START_REGID" Type="STR" Value="" />
+        <Item Name="END_REGID" Type="STR" Value="" />
+        <Item Name="ROW_PER_PAGE" Type="STR" Value="" />
+        <Item Name="REF_IMG_URL" Type="STR" Value="" />
+        <Item Name="SCANDATE" Type="STR" Value="" />
+        <Item Name="SCANNER" Type="STR" Value="" />
+        <Item Name="SCANSUCCESSFLAG" Type="STR" Value=""/>
+      </Items>
+    </Section>
+    <Section ID="2" Name="LogComment" Type="STR">
+      <Items Name="Page" Type="SEQ">
+        <Means Name="Page">
+          <Mean ID="C00" Name="BOOK" Type="STR" />
+          <Mean ID="C01" Name="PAGE" Type="STR" />
+          <Mean ID="C02" Name="ROW" Type="STR" />
+          <Mean ID="C03" Name="RID" Type="STR" />
+          <Mean ID="C04" Name="GUNMODEL" Type="STR" />
+          <Mean ID="C05" Name="GUNBRAND" Type="STR" />
+          <Mean ID="C06" Name="OWNER" Type="STR" />
+          <Mean ID="C07" Name="ORGANIZE" Type="STR" />
+          <Mean ID="C08" Name="ADDRESS" Type="STR" />
+          <Mean ID="C09" Name="REGDATE" Type="STR" />
+          <Mean ID="C10" Name="COMMENT" Type="STR" />
+          <Mean ID="C11" Name="EDITOR" Type="STR" />
+          <Mean ID="C12" Name="EDITDATE" Type="STR" />
+          <Mean ID="C13" Name="VERIFYBY" Type="STR" />
+          <Mean ID="C14" Name="VERIFYDATE" Type="STR" />
+          <Mean ID="C15" Name="STATUS" Type="STR" />
+        </Means>
+      </Items>
+    </Section>
+  </Data>
+</Document>

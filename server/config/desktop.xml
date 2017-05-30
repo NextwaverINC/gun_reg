@@ -1,0 +1,6 @@
+﻿<config>
+  <menus ID="0" Name="Setting" Icon="menu-icon fa fa-eye" ManagementName="Administrator" Type="Management" />
+  <menus ID="1" Name="ข้อมูลทะเบียนปืน" Icon="menu-icon fa fa-book" ManagementName="Gunbook" Type="Management" />
+  <menus ID="2" Name="ดูข้อมูล" Icon="menu-icon fa fa-book" Type="Url" Url="../page/Default.aspx">
+  </menus>
+</config>

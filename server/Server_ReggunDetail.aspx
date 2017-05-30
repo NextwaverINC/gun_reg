@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Server_ReggunDetail.aspx.cs" Inherits="server_Server_ReggunDetail" %>
