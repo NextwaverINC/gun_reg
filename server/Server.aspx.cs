@@ -620,7 +620,7 @@ public partial class page_Server : System.Web.UI.Page
                             string IconID = listItem[y].Attributes["IconID"].Value;
                             string sName = listItem[y].Attributes["Name"].Value;
                             string MappingID = listItem[y].Attributes["MappingID"].Value;
-                            string SubItemID = ID + "." + z + "." + y;
+                            string SubItemID = ID + "-" + z + "-" + y;
 
                             isAccess = true;
                             if (MENU_LIST.Length > 0)

@@ -18,54 +18,44 @@
                     <div class="widget-body">
                         <div class="widget-main">
                             <div class="row">
-                                <div class="col-md-4 col-sm-6" style="margin-bottom: 5px;">
+                                <div class="col-md-8 col-sm-12">
                                     <div class="form-group">
-                                        <div class="col-sm-6 col-xs-6">
-                                            <p class="text-right"><strong>เลขที่หนังสือ :</strong></p>
+                                        <div class="col-md-4 col-sm-8" style="padding: 0px;">
+                                            <p class="text-right"><strong>เลือกวันที่ต้องการค้นหา&nbsp;&nbsp;จากวันที่&nbsp;&nbsp;:&nbsp;&nbsp;</strong></p>
                                         </div>
-                                        <div class="col-sm-6 col-xs-6">
+                                        <div class="col-sm-3 col-xs-4" style="padding: 0px;">
                                             <input type="number" class="form-control" style="width: 100%" />
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6" style="margin-bottom: 5px;">
-                                    <div class="form-group">
-                                        <div class="col-sm-6 col-xs-6">
-                                            <p class="text-right"><strong>เลขที่หน้า :</strong></p>
+                                        <div class="col-sm-2 col-xs-8" style="padding: 0px;">
+                                            <p class="text-right"><strong>ถึงวันที่&nbsp;&nbsp;:&nbsp;&nbsp;</strong></p>
                                         </div>
-                                        <div class="col-sm-6 col-xs-6">
+                                        <div class="col-sm-3 col-xs-4" style="padding: 0px;">
                                             <input type="number" class="form-control" style="width: 100%" />
                                         </div>
+
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-6" style="margin-bottom: 5px;">
-                                    <div class="form-group">
-                                        <div class="col-sm-6 col-xs-6">
-                                            <p class="text-right"><strong>เวอร์ชั่นหน้า :</strong></p>
-                                        </div>
-                                        <div class="col-sm-6 col-xs-6">
-                                            <input type="number" class="form-control" style="width: 100%" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6" style="margin-bottom: 5px;">
-                                    <div class="form-group">
-                                        <div class="col-sm-6 col-xs-6">
-                                            <p class="text-right"><strong>ทะเบียนปืน :</strong></p>
-                                        </div>
-                                        <div class="col-sm-6 col-xs-6">
-                                            <input type="text" class="form-control" style="width: 100%" />
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="col-md-3 col-sm-6" style="">
+                                        <div class="form-group">
+                                            <div class="col-sm-6 col-xs-6" style="padding: 0px;">
+                                                <p class="text-right"><strong>Status :</strong></p>
+                                            </div>
+                                            <div class="col-sm-6 col-xs-6" style="padding: 0px;">
+                                                <select>
+                                                    <option value="Create">Create</option>
+                                                    <option value="Scan">Scan</option>
+                                                    <option value="Save">Save</option>
+                                                    <option value="Submit">Submit</option>
+                                                    <option value="Approve">Approve</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6" style="margin-bottom: 5px;">
-                                    <div class="form-group">
-                                        <div class="col-sm-6 col-xs-6">
-                                            <p class="text-right"><strong>เลขหมายปืน :</strong></p>
-                                        </div>
-                                        <div class="col-sm-6 col-xs-6">
-                                            <input type="text" class="form-control" style="width: 100%" />
-                                        </div>
+                                    <div class="col-md-1 col-sm-6">
+                                        <button class="btn btn-app btn-success btn-sm" ng-click="fnManagementSearch()" style="padding: 5px; float: right;">
+                                            Search
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +69,7 @@
     <div id="loading" style="display: none; margin-top: 50px">
         <center>
             <h1 class="bigger"><i class="ace-icon fa fa-spinner fa-spin orange"></i></h1>
-            <h3>                    
+            <h3>
                 อยู่ระหว่างประมวลผลโปรดรอ...
             </h3>
         </center>
@@ -149,10 +139,8 @@
             window.location.reload();
         }
         function StartPages($scope, $http) {
-            $scope
         }
         function loadData($scope, $http) {
-
             var data = $.param({
                 Command: 'LoadManagement',
                 ConfigName: getParamValue("CFN"),

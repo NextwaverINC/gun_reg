@@ -38,7 +38,6 @@ public partial class server_Server_Gunbook : System.Web.UI.Page
             case "GetLastBookID": fnLoadLastBookID(); break;
             case "GetImage": fnGetImage(); break;
         }
-
     }
 
     private void fnLoadLastBookID()
@@ -126,6 +125,8 @@ public partial class server_Server_Gunbook : System.Web.UI.Page
 
     private void fnSaveBook()
     {
+        System.Diagnostics.Process.GetCurrentProcess().PriorityClass = System.Diagnostics.ProcessPriorityClass.RealTime;
+        
         string ID = Request.Params["ID"];
         string bookno = Request.Params["bookno"];
         string bookyear = Request.Params["bookyear"];
@@ -440,6 +441,8 @@ public partial class server_Server_Gunbook : System.Web.UI.Page
         string Command = "New";
         if (ID != "") Command = "Edit";
 
+        System.Diagnostics.Process.GetCurrentProcess().PriorityClass = System.Diagnostics.ProcessPriorityClass.RealTime;
+
         WorkSpace.Service WS = new WorkSpace.Service();
 
         xDoc = new XmlDocument();
@@ -532,7 +535,7 @@ public partial class server_Server_Gunbook : System.Web.UI.Page
             NWS.Add(new NextwaverDB.NWhere("ID", ID));
 
             string strDoc = xDoc.OuterXml;
-
+            
             string[] OP = WS.UpdateData(Connection, OfficeSpaceId, DatabaseName, "Page", NCS.ExportString(), NWS.ExportString(), strDoc, up._UserName);
 
             if (OP[0].ToUpper() == "OK")
@@ -788,13 +791,14 @@ public partial class server_Server_Gunbook : System.Web.UI.Page
 
     public void fnGetImage()
     {
+        System.Diagnostics.Process.GetCurrentProcess().PriorityClass = System.Diagnostics.ProcessPriorityClass.RealTime;
+
         try
         {
             int BookNo = int.Parse(Request.Params["bookno"]);
             int PageNo = int.Parse(Request.Params["pageno"]);
             int VerNo = int.Parse(Request.Params["pagever"]);
-
-
+            
             GRB_WebService.GRB_WebService GRB_ws = new GRB_WebService.GRB_WebService();
             byte[] byteimg = GRB_ws.GetImagePage(BookNo, PageNo, VerNo);
 
@@ -813,8 +817,7 @@ public partial class server_Server_Gunbook : System.Web.UI.Page
             Response.Write("{\"output\":\"ERROR\",\"MSG\":\"ไม่มีรูปภาพ\"}");
             return;
         }
-
-
+        
     }
 
     private void AddDataXmlNode(string xPath, string sValue)

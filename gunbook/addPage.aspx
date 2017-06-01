@@ -128,7 +128,6 @@
         <div class="row">
             <form id="form1" runat="server">
                 <div id="mainApp" ng-app="myApp" ng-controller="StartApp">
-
                     <div class="widget-box transparent" id="widget-box-2">
                         <div class="widget-header widget-header-small">
                             <h4 class="widget-title blue smaller">
@@ -359,7 +358,7 @@
                                                         <datalist id="dtlGunType">
                                                             <option ng-repeat="item in datalistGunType" value="{{item}}" />
                                                         </datalist>
-                                                        <a class="input-group-addon" ng-click="openDataStandard('GunType')">
+                                                        <a class="input-group-addon" ng-click="openDataStandard('GunType', RecordData.GunType)">
                                                             <i class="ace-icon fa fa-plus"></i>
                                                         </a>
                                                     </div>
@@ -377,7 +376,7 @@
                                                         <datalist id="dtlGunSize">
                                                             <option ng-repeat="item in datalistGunSize" value="{{item}}" />
                                                         </datalist>
-                                                        <a class="input-group-addon" ng-click="openDataStandard('GunSize')">
+                                                        <a class="input-group-addon" ng-click="openDataStandard('GunSize', RecordData.GunSize)">
                                                             <i class="ace-icon fa fa-plus"></i>
                                                         </a>
                                                     </div>
@@ -395,7 +394,7 @@
                                                         <datalist id="dtlGunBrand">
                                                             <option ng-repeat="item in datalistGunBrand" value="{{item}}" />
                                                         </datalist>
-                                                        <a class="input-group-addon" ng-click="openDataStandard('GunBrand')">
+                                                        <a class="input-group-addon" ng-click="openDataStandard('GunBrand', RecordData.GunBrand)">
                                                             <i class="ace-icon fa fa-plus"></i>
                                                         </a>
                                                     </div>
@@ -423,7 +422,7 @@
                                                         <datalist id="dtlGunBarrel">
                                                             <option ng-repeat="item in datalistGunBarrel" value="{{item}}" />
                                                         </datalist>
-                                                        <a class="input-group-addon" ng-click="openDataStandard('GunBarrel')">
+                                                        <a class="input-group-addon" ng-click="openDataStandard('GunBarrel', RecordData.GunBarrel)">
                                                             <i class="ace-icon fa fa-plus"></i>
                                                         </a>
                                                     </div>
@@ -441,7 +440,7 @@
                                                         <datalist id="dtlGunColor">
                                                             <option ng-repeat="item in datalistGunColor" value="{{item}}" />
                                                         </datalist>
-                                                        <a class="input-group-addon" ng-click="openDataStandard('GunColor')">
+                                                        <a class="input-group-addon" ng-click="openDataStandard('GunColor', RecordData.GunColor)">
                                                             <i class="ace-icon fa fa-plus"></i>
                                                         </a>
                                                     </div>
@@ -459,7 +458,7 @@
                                                         <datalist id="dtlGunOwner">
                                                             <option ng-repeat="item in datalistGunOwner" value="{{item}}" />
                                                         </datalist>
-                                                        <a class="input-group-addon" ng-click="openDataStandard('GunOwner')">
+                                                        <a class="input-group-addon" ng-click="openDataStandard('GunOwner', RecordData.GunOwner)">
                                                             <i class="ace-icon fa fa-plus"></i>
                                                         </a>
                                                     </div>
@@ -507,7 +506,7 @@
                                                         <datalist id="dtlGunCountry">
                                                             <option ng-repeat="item in datalistGunCountry" value="{{item}}" />
                                                         </datalist>
-                                                        <a class="input-group-addon" ng-click="openDataStandard('GunCountry')">
+                                                        <a class="input-group-addon" ng-click="openDataStandard('GunCountry', RecordData.GunCountry)">
                                                             <i class="ace-icon fa fa-plus"></i>
                                                         </a>
                                                     </div>
@@ -680,7 +679,7 @@
                                                 <table id="example" class="display">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 20px;"></th>
+                                                            <%--<th style="width: 20px;"></th>--%>
                                                             <th>ID</th>
                                                             <th>ข้อมูล</th>
                                                             <th>รายละเอียด</th>
@@ -688,20 +687,20 @@
                                                                 <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
                                                                 วันที่อัพเดท
                                                             </th>--%>
-                                                            <th style="width: 20px;"></th>
+                                                            <%--<th style="width: 20px;"></th>--%>
                                                         </tr>
                                                     </thead>
 
                                                     <tbody>
                                                         <tr ng-repeat="item in DataRecordsStandard" on-finish-render="ngRepeatFinished">
-                                                            <td class="text-center" ng-click="fnSelectStandard(item.NAME)"><span class="glyphicon glyphicon-ok" style="color: #0070ff; font-size: 16px;"></span></td>
+                                                            <%--<td class="text-center" ng-click="fnSelectStandard(item.NAME)"><span class="glyphicon glyphicon-ok" style="color: #0070ff; font-size: 16px;"></span></td>--%>
                                                             <td nowrap>{{item.ID}}</td>
                                                             <td nowrap>{{item.NAME}}</td>
                                                             <td nowrap>{{item.DESCRIPTION}}</td>
                                                             <%--<td nowrap>{{item.UPDATEDATE}}</td>--%>
-                                                            <td class="text-center" nowrap>
+                                                            <%--<td class="text-center" nowrap>
                                                                 <span class="glyphicon glyphicon-trash" ng-click="fnDeleteStandard(item.ID)" style="color: #a95553; font-size: 16px;"></span>
-                                                            </td>
+                                                            </td>--%>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -823,7 +822,7 @@
     <script src="../docs/assets/js/language/javascript.js"></script>
     <script src="../assets/js/bootbox.js"></script>
 
-    <%--    <link href="../assets/js/date-time/bootstrap-datepicker.css" rel="stylesheet" />--%>
+    <%--<link href="../assets/js/date-time/bootstrap-datepicker.css" rel="stylesheet" />--%>
     <%--<script src="../assets/js/date-time/bootstrap-datepicker-custom.js"></script>--%>
     <%--<script src="../assets/js/date-time/locales/bootstrap-datepicker.th.min.js" charset="UTF-8"></script>--%>
 
@@ -1188,6 +1187,7 @@
                     $tmp_http.post("../server/Server_Gunbook.aspx", data, config)
                         .success(function (data, status, headers, config) {
                             if (data.output == 'OK') {
+                                $scope.fnSelectStandard($scope.dataStandard.dataname);
                                 switch ($scope.dataStandard.datatype) {
                                     case 'GunType':
                                         $scope.datalistGunType = data.DATARECORDS;
@@ -1212,8 +1212,8 @@
                                         break;
                                     default:
                                 }
-                                $('#myModalAddStandard').modal('hide');
-                                $scope.openDataStandard($scope.dataStandard.datatype);
+                                //$('#myModalAddStandard').modal('hide');
+                                //$scope.openDataStandard($scope.dataStandard.datatype);
                                 fnUnLoading();
                             } else {
                                 fnUnLoading();
@@ -1229,7 +1229,7 @@
 
             }
 
-            $scope.openDataStandard = function (Datatype) {
+            $scope.openDataStandard = function (Datatype,Dataname) {
 
                 $('#example').DataTable().destroy();
 
@@ -1248,6 +1248,7 @@
                 ERRORStandard.innerHTML = "";
                 divStandard.style.display = "";
                 $scope.dataStandard.datatype = Datatype;
+                $scope.dataStandard.dataname = Dataname;
                 $scope.DataRecordsStandard = [];
 
                 $http.post("../server/Server_Gunbook.aspx", data, config)
@@ -1269,7 +1270,7 @@
             }
 
             $scope.checkboxValue = function (itemdata) {
-                
+                $scope.clearRow();
                 $scope.RecordData.GunType = itemdata.GunType;
                 $scope.RecordData.GunSize = itemdata.GunSize;
                 $scope.RecordData.GunBrand = itemdata.GunBrand;
@@ -1299,7 +1300,7 @@
                 $tmp_http.post("../server/Server_Gunbook.aspx", data, config)
                     .success(function (data, status, headers, config) {
                         if (data.output == 'OK') {
-                            $scope.openDataStandard($scope.dataStandard.datatype);
+                            $scope.openDataStandard($scope.dataStandard.datatype,"");
                             fnUnLoading();
                         } else {
                             ERROR.innerHTML = data.MSG;
@@ -1334,7 +1335,7 @@
                         break;
                     default:
                 }
-                $('#myModalAddStandard').modal('hide');
+                //$('#myModalAddStandard').modal('hide');
             }
 
             $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
